@@ -1,12 +1,9 @@
-import './App.css';
-import About from './components/about/about';
-import Home from './components/home/home';
+import Home from './components/Home';
 
 function App() {
   return (
     <>
-      <Home></Home>
-      <About></About>
+      <Home />
     </>
   );
 }
