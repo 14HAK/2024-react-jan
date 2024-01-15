@@ -1,9 +1,9 @@
-import Demo from './components/Demo';
+import Temo from './components/Temo';
 
 function App() {
   return (
     <>
-      <Demo></Demo>
+      <Temo></Temo>
     </>
   );
 }

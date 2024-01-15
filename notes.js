@@ -1,4 +1,3 @@
-
 // ----------------------------------------------------------------------------------------------------------------------------
 //   REACT PRACTICE [JUN, 2024]
 // ----------------------------------------------------------------------------------------------------------------------------
@@ -8,13 +7,12 @@
 // `-> npm install`
 // `-> npm run dev`
 
-//* HOOK [UseState()]
+//* HOOK [ UseState() ]
 // const [count, setCount] = useState(0); // dealer main state management
 
 // setCount(count + 1) // call the state function to maintaining useState()
 
-
-//* HOOK [UseReducer()]
+//* HOOK [ UseReducer() ]
 // const initialState = [ // initial state
 //   { name: 'josim', age: 33 },
 //   { name: 'masud', age: 56 },
@@ -30,3 +28,13 @@
 // const [state, dispatch] = useReducer(reducer, initialState); // useReducer main state management
 
 // dispatch({ type: 'demo', payload: { name: 'mina', age: 21 } }) // call the dispatch function to maintaining useReducer() states
+
+//* HOOK [ useRef() ]
+const anyRef = useRef(); // reference hook like getElementById
+
+useEffect(() => {
+  console.log(anyRef.current);
+  anyRef.current.classList.add('text-7xl');
+}, []);
+
+<p ref={anyRef}> Temo </p>;
