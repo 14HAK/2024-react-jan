@@ -9,7 +9,24 @@
 // `-> npm run dev`
 
 //* HOOK [UseState()]
+// const [count, setCount] = useState(0); // dealer main state management
 
+// setCount(count + 1) // call the state function to maintaining useState()
 
 
 //* HOOK [UseReducer()]
+// const initialState = [ // initial state
+//   { name: 'josim', age: 33 },
+//   { name: 'masud', age: 56 },
+//   { name: 'roman', age: 17 },
+// ];
+
+// const reducer = (state, action) => { // reducer maintaining function
+//   const data = state.filter((el) => el.name !== 'masud');
+//   data.push(action?.payload);
+//   return [...data];
+// };
+
+// const [state, dispatch] = useReducer(reducer, initialState); // useReducer main state management
+
+// dispatch({ type: 'demo', payload: { name: 'mina', age: 21 } }) // call the dispatch function to maintaining useReducer() states
