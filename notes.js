@@ -8,11 +8,15 @@
 // `-> npm run dev`
 
 //* HOOK [ UseState() ]
+// const [state, setState] = useState(initialState)
+
 // const [count, setCount] = useState(0); // dealer main state management
 
 // setCount(count + 1) // call the state function to maintaining useState()
 
 //* HOOK [ UseReducer() ]
+// const [state, dispatch] = useReducer(reducer-function, initialArg)
+
 // const initialState = [ // initial state
 //   { name: 'josim', age: 33 },
 //   { name: 'masud', age: 56 },
@@ -30,11 +34,23 @@
 // dispatch({ type: 'demo', payload: { name: 'mina', age: 21 } }) // call the dispatch function to maintaining useReducer() states
 
 //* HOOK [ useRef() ]
-const anyRef = useRef(); // reference hook like getElementById
+// const ref = useRef(initialValue)
 
-useEffect(() => {
-  console.log(anyRef.current);
-  anyRef.current.classList.add('text-7xl');
+// const anyRef = useRef(); // reference hook like getElementById
+
+// useEffect(() => {
+//   console.log(anyRef.current);
+//   anyRef.current.classList.add('text-7xl');
+// }, []);
+
+// <p ref={anyRef}> Temo </p>;
+
+//* HOOK [ useCallback() ]
+// const cachedFn = useCallback(fn, dependencies)
+
+const handleFunc = useCallback(() => {
+  setData({ name: 'tosi', age: '35' });
+  console.log('useCallback');
 }, []);
 
-<p ref={anyRef}> Temo </p>;
+onClick = {() => handleFunc()}

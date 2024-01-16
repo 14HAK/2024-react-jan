@@ -1,22 +1,29 @@
-import { useEffect } from 'react';
-import { useRef } from 'react';
+import { useState } from 'react';
+import { useCallback } from 'react';
 
 function Temo() {
-  const anyRef = useRef();
+  const [data, setData] = useState({ name: 'lobo', age: '10' });
+  console.log('normal component');
 
-  useEffect(() => {
-    console.log(anyRef.current);
-    anyRef.current.classList.add('text-7xl');
+  const handleFunc = useCallback(() => {
+    setData({ name: 'tosi', age: '35' });
+    console.log('useCallback');
   }, []);
 
   return (
     <div>
-      <p ref={anyRef} className='text-2xl font-bold text-red-700'>
-        Temo
-      </p>
-      <h1 className='text-2xl font-bold text-green-700'>lipo</h1>
+      <button
+        onClick={() => handleFunc()}
+        className='border border-red-700 py-2 px-5 m-5'
+      >
+        {data?.name}
+      </button>
     </div>
   );
 }
+
+const Moll = () => {
+  return <div>calosa</div>;
+};
 
 export default Temo;
