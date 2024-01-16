@@ -67,3 +67,13 @@
 
 // return,
 // { memoizedComponent }
+
+//* HOOK [ Memo() function ]
+// const Main = memo(() => {
+//   return (
+//     <main>
+//       <AnotherComp />
+//       <AnyComp />
+//     </main>
+//   )
+// })
