@@ -2,8 +2,6 @@
 //   REACT PRACTICE [JUN, 2024]
 // ----------------------------------------------------------------------------------------------------------------------------
 
-import { Suspense } from "react";
-
 //* 1.vite react setup:
 // `-> npm install create vite@latest`
 // `-> npm install`
@@ -81,9 +79,15 @@ import { Suspense } from "react";
 // })
 
 //* Lazy loading and suspense
-const Home = Lazy(() => import './src/components/HomPage');
+// const Home = Lazy(() => import './src/components/HomPage');
+
+// return,
+//   <Suspense fallback={<p>loading...</p>}>
+//     <Home />
+//   </Suspense>
+
+//* HOOK [ useId() ] for identifying deferent id
+const id = useId();
 
 return,
-  <Suspense fallback={<p>loading...</p>}>
-    <Home />
-  </Suspense>
+  <input htmlFor={`${id}-name`} />
