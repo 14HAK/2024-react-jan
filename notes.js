@@ -12,7 +12,7 @@
 
 // const [count, setCount] = useState(0); // dealer main state management
 
-// setCount(count + 1) // call the state function to maintaining useState()
+// onClick = handleClick(setCount(count + 1)) // call the state function to maintaining useState()
 
 //* HOOK [ UseReducer() ]
 // const [state, dispatch] = useReducer(reducer-function, initialArg)
@@ -31,7 +31,8 @@
 
 // const [state, dispatch] = useReducer(reducer, initialState); // useReducer main state management
 
-// dispatch({ type: 'demo', payload: { name: 'mina', age: 21 } }) // call the dispatch function to maintaining useReducer() states
+// return,
+// onClick = handleClick(dispatch({ type: 'demo', payload: { name: 'mina', age: 21 } })) // call the dispatch function to maintaining useReducer() states
 
 //* HOOK [ useRef() ]
 // const ref = useRef(initialValue)
@@ -43,6 +44,7 @@
 //   anyRef.current.classList.add('text-7xl');
 // }, []);
 
+// return,
 // <p ref={anyRef}> Temo </p>;
 
 //* HOOK [ useCallback() ]
@@ -53,13 +55,15 @@
 //   console.log('useCallback');
 // }, []);
 
+// return,
 // onClick = {() => handleFunc()}
 
 //* HOOK [ useMemo() ]
 // const cachedValue = useMemo(calculateValue, dependencies)
 
-const memoizedComponent = useMemo(() => {
-  return <Child />;
-}, []);
+// const memoizedComponent = useMemo(() => {
+//   return <Child />;
+// }, []);
 
-{ memoizedComponent }
+// return,
+// { memoizedComponent }
