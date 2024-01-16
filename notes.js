@@ -2,6 +2,8 @@
 //   REACT PRACTICE [JUN, 2024]
 // ----------------------------------------------------------------------------------------------------------------------------
 
+import { Suspense } from "react";
+
 //* 1.vite react setup:
 // `-> npm install create vite@latest`
 // `-> npm install`
@@ -77,3 +79,11 @@
 //     </main>
 //   )
 // })
+
+//* Lazy loading and suspense
+const Home = Lazy(() => import './src/components/HomPage');
+
+return,
+  <Suspense fallback={<p>loading...</p>}>
+    <Home />
+  </Suspense>
