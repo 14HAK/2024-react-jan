@@ -87,7 +87,7 @@
 //   </Suspense>
 
 //* HOOK [ useId() ] for identifying deferent id
-const id = useId();
+// const id = useId();
 
-return,
-  <input htmlFor={`${id}-name`} />
+// return,
+//   <input htmlFor={`${id}-name`} />
