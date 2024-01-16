@@ -48,9 +48,18 @@
 //* HOOK [ useCallback() ]
 // const cachedFn = useCallback(fn, dependencies)
 
-const handleFunc = useCallback(() => {
-  setData({ name: 'tosi', age: '35' });
-  console.log('useCallback');
+// const handleFunc = useCallback(() => {
+//   setData({ name: 'tosi', age: '35' });
+//   console.log('useCallback');
+// }, []);
+
+// onClick = {() => handleFunc()}
+
+//* HOOK [ useMemo() ]
+// const cachedValue = useMemo(calculateValue, dependencies)
+
+const memoizedComponent = useMemo(() => {
+  return <Child />;
 }, []);
 
-onClick = {() => handleFunc()}
+{ memoizedComponent }

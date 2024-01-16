@@ -1,29 +1,39 @@
-import { useState } from 'react';
-import { useCallback } from 'react';
+import { useEffect, useMemo } from 'react';
 
 function Temo() {
-  const [data, setData] = useState({ name: 'lobo', age: '10' });
-  console.log('normal component');
-
-  const handleFunc = useCallback(() => {
-    setData({ name: 'tosi', age: '35' });
-    console.log('useCallback');
+  useEffect(() => {
+    console.log('parent components');
   }, []);
 
+  const memoizedComponent = useMemo(() => {
+    return <Child />;
+  }, []);
+
+  const handleClick = () => {
+    console.log('handle clicked');
+  };
   return (
     <div>
       <button
-        onClick={() => handleFunc()}
+        onClick={() => handleClick()}
         className='border border-red-700 py-2 px-5 m-5'
       >
-        {data?.name}
+        click-me
       </button>
+      {memoizedComponent}
     </div>
   );
 }
 
-const Moll = () => {
-  return <div>calosa</div>;
+const Child = () => {
+  useEffect(() => {
+    console.log('child components');
+  }, []);
+  return (
+    <div>
+      <p>i am child</p>
+    </div>
+  );
 };
 
 export default Temo;
