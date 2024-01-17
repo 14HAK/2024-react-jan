@@ -152,48 +152,56 @@
 // console.log(data.counter);
 
 //* Redux Toolkit async thunk
-// create redux async thunk function
-export const manageAsync = createAsyncThunk('loadPost100', async () => {
-  const res = await fetch('https://jsonplaceholder.typicode.com/posts')
-  const data = await res.json();
-  console.log('function trigged!');
-  return data;
-})
+// // create redux async thunk function
+// export const manageAsync = createAsyncThunk('loadPost100', async () => {
+//   const res = await fetch('https://jsonplaceholder.typicode.com/posts')
+//   const data = await res.json();
+//   console.log('function trigged!');
+//   return data;
+// })
 
-// add this in under the slice under the extraReducers
-const counterSlice = createSlice({
-  name: 'counter',
-  initialState: [],
-  reducers: {
-    up: (state, action) => {
-      return [...state, action.payload];
-    },
-    down: (state, action) => {
-      const newName = action.payload.payload.name;
-      state[0].name = newName
-      return state;
-    },
-  },
-  extraReducers: (builder) => {
-    builder.addCase(manageAsync.pending, (state) => {
-      // state.loading = 'loading'
-      return;
-    })
+// // add this in under the slice under the extraReducers
+// const counterSlice = createSlice({
+//   name: 'counter',
+//   initialState: [],
+//   reducers: {
+//     up: (state, action) => {
+//       return [...state, action.payload];
+//     },
+//     down: (state, action) => {
+//       const newName = action.payload.payload.name;
+//       state[0].name = newName
+//       return state;
+//     },
+//   },
+//   extraReducers: (builder) => {
+//     builder.addCase(manageAsync.pending, (state) => {
+//       // state.loading = 'loading'
+//       return;
+//     })
 
-    builder.addCase(manageAsync.fulfilled, (state, action) => {
-      return [...state, action.payload]
-    })
+//     builder.addCase(manageAsync.fulfilled, (state, action) => {
+//       return [...state, action.payload]
+//     })
 
-    builder.addCase(manageAsync.rejected, (state, action) => {
-      // state.error = error.message;
-      return;
-    })
-  }
-})
+//     builder.addCase(manageAsync.rejected, (state, action) => {
+//       // state.error = error.message;
+//       return;
+//     })
+//   }
+// })
 
-export const { up, down } = counterSlice.actions;
-export default counterSlice.reducer;
+// export const { up, down } = counterSlice.actions;
+// export default counterSlice.reducer;
 
-// lastly use this redux Async thunk function and update the state
-const dispatch = useDispatch();
-const handlePost = () => dispatch(manageAsync());
+// // lastly use this redux Async thunk function and update the state
+// const dispatch = useDispatch();
+// const handlePost = () => dispatch(manageAsync());
+
+
+
+
+
+
+
+
