@@ -152,32 +152,40 @@
 // console.log(data.counter);
 
 //* Redux Toolkit async thunk
-// custom asynchronous function any.
-const asyncFunction = async () => {
-  //....
-}
-
-// create extraReducers in slice under reducers for add async method
-const slice = createSlice({
-  name: 'anyName',
-  initialState: { entities: [], loading: 'idle' },
-  reducers: {
-    //...
-  },
-  extraReducers: (builder) => {
-    builder.addCase(asyncFunction.pending, (state) => {
-      state.loading = true
-    })
-    builder.addCase(asyncFunction.fulfilled, (state, action) => {
-      state.loading = false
-      state.entities.push(action.payload)
-    })
-    builder.addCase(asyncFunction.rejected, (state, action) => {
-      state.error = action.error.message
-    })
-  },
+// create redux async thunk function
+export const manageAsync = createAsyncThunk('loadPost100', async () => {
+  const res = await fetch('https://jsonplaceholder.typicode.com/posts')
+  const data = await res.json();
+  console.log('function trigged!');
+  return data;
 })
 
-// use asynchronous function
+// add this in under the slice under the extraReducers
+const counterSlice = createSlice({
+  name: 'counter',
+  initialState: [],
+  reducers: {
+    up: (state, action) => {
+      return [...state, action.payload];
+    },
+    down: (state, action) => {
+      const newName = action.payload.payload.name;
+      state[0].name = newName
+      return state;
+    },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(manageAsync.fulfilled, (state, action) => {
+
+      return [...state, action.payload]
+    })
+  }
+
+})
+
+export const { up, down } = counterSlice.actions;
+export default counterSlice.reducer;
+
+// lastly use this redux Async thunk function and update the state
 const dispatch = useDispatch();
-dispatch(asyncFunction());
+const handlePost = () => dispatch(manageAsync());

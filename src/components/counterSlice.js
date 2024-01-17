@@ -1,17 +1,17 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { manage } from "./new";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
+export const manageAsync = createAsyncThunk('loadPost100', async () => {
+  const res = await fetch('https://jsonplaceholder.typicode.com/posts')
+  const data = await res.json();
+  console.log('function trigged!');
+  return data;
+})
 
 const counterSlice = createSlice({
   name: 'counter',
-  initialState: [
-    { name: 'korim', age: 22 },
-    { name: 'basar', age: 20 },
-    { name: 'loffer', age: 28 },
-  ],
+  initialState: [],
   reducers: {
     up: (state, action) => {
-      manage('second print!')
       return [...state, action.payload];
     },
     down: (state, action) => {
@@ -19,7 +19,14 @@ const counterSlice = createSlice({
       state[0].name = newName
       return state;
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(manageAsync.fulfilled, (state, action) => {
+
+      return [...state, action.payload]
+    })
   }
+
 })
 
 export const { up, down } = counterSlice.actions;
