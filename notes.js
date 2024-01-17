@@ -175,12 +175,20 @@ const counterSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(manageAsync.fulfilled, (state, action) => {
+    builder.addCase(manageAsync.pending, (state) => {
+      // state.loading = 'loading'
+      return;
+    })
 
+    builder.addCase(manageAsync.fulfilled, (state, action) => {
       return [...state, action.payload]
     })
-  }
 
+    builder.addCase(manageAsync.rejected, (state, action) => {
+      // state.error = error.message;
+      return;
+    })
+  }
 })
 
 export const { up, down } = counterSlice.actions;
