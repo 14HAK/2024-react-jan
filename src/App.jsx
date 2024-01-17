@@ -1,10 +1,12 @@
-import Temo from './components/Temo';
+import { Provider } from 'react-redux';
+import Counter from './components/Counter';
+import store from './components/store';
 
 function App() {
   return (
-    <>
-      <Temo></Temo>
-    </>
+    <Provider store={store}>
+      <Counter />
+    </Provider>
   );
 }
 

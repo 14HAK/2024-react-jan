@@ -91,3 +91,62 @@
 
 // return,
 //   <input htmlFor={`${id}-name`} />
+
+//* Redux Toolkit
+// slice.js || create redux slice
+import { createSlice } from "@reduxjs/toolkit";
+import { manage } from "./new";
+
+
+const counterSlice = createSlice({
+  name: 'counter',
+  initialState: [
+    { name: 'korim', age: 22 },
+    { name: 'basar', age: 20 },
+    { name: 'loffer', age: 28 },
+  ],
+  reducers: {
+    up: (state, action) => {
+      manage('second print!')
+      return [...state, action.payload];
+    },
+    down: (state, action) => {
+      const newName = action.payload.payload.name;
+      state[0].name = newName
+      return state;
+    },
+  }
+})
+
+export const { up, down } = counterSlice.actions;
+export default counterSlice.reducer;
+
+// store.js || create store
+import { configureStore } from "@reduxjs/toolkit";
+import counterReducer from "./counterSlice"
+
+const store = configureStore({
+  reducer: {
+    counter: counterReducer,
+  }
+})
+
+export default store;
+
+
+// pass data in all component with using app.js
+<Provider store={store}>
+  <Counter />
+</Provider>
+
+// using reducers function 
+const dispatch = useDispatch();
+
+const handleUp = () =>
+  dispatch(up({ typr: 'up', payload: { name: 'loyal', age: 11 } }));
+const handleDown = () =>
+  dispatch(down({ type: 'down', payload: { name: 'moffol', age: 19 } }));
+
+// using state data and display data
+const data = useSelector((state) => state);
+console.log(data.counter);
