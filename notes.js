@@ -197,6 +197,34 @@
 // const handlePost = () => dispatch(manageAsync());
 
 //* dynamic style
-<div className={`${active ? 'bg-red-700' : 'bg-green-700'} text-2xl p-5 m-5`}>
-  dynamic style
-</div>;
+// {/* <div className={`${active ? 'bg-red-700' : 'bg-green-700'} text-2xl p-5 m-5`}>
+//   dynamic style
+// </div>; */}
+
+
+//* custom fetch data in react with loading, error
+import { useState, useEffect } from 'react';
+
+const useCustomFetch = (url) => {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(url);
+        const result = await response.json();
+        setData(result);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [url]);
+
+  return { data, loading, error };
+};
