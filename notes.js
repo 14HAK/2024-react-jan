@@ -97,7 +97,6 @@
 // import { createSlice } from "@reduxjs/toolkit";
 // import { manage } from "./new";
 
-
 // const counterSlice = createSlice({
 //   name: 'counter',
 //   initialState: [
@@ -132,7 +131,6 @@
 // })
 
 // export default store;
-
 
 // // pass data in all component with using app.js
 // <Provider store={store}>
@@ -198,10 +196,7 @@
 // const dispatch = useDispatch();
 // const handlePost = () => dispatch(manageAsync());
 
-
-
-
-
-
-
-
+//* dynamic style
+<div className={`${active ? 'bg-red-700' : 'bg-green-700'} text-2xl p-5 m-5`}>
+  dynamic style
+</div>;
