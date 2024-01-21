@@ -16,7 +16,7 @@ function App() {
   return (
     <myContext.Provider value={myContextData}>
       <Home />
-      <Manu />
+      {/* <Manu /> */}
     </myContext.Provider>
   );
 }
